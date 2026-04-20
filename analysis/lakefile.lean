@@ -26,6 +26,12 @@ require subverso from git "https://github.com/leanprover/subverso" @ "main"
 -- This library is needed to build the online version.
 require MD4Lean from git "https://github.com/acmepjz/md4lean" @ "main"
 
+-- Lean REPL, pinned to the same toolchain as `lean-toolchain` (v4.23.0-rc2).
+-- Note: `lake update` prints "multiple toolchain candidates" because MD4Lean and
+-- subverso pin older Lean versions. This is harmless as long as `lean-toolchain`
+-- exists and keeps Analysis + REPL aligned on v4.23.0-rc2; do not delete it.
+require REPL from git "https://github.com/leanprover-community/repl.git" @ "v4.23.0-rc2"
+
 @[default_target]
 lean_lib «Analysis» where
   -- add any library configuration options here
